@@ -7,7 +7,7 @@ import axios from "axios";
 const CreateTacoContainer = (props) => {
     useEffect(() => {loadIngredient()}, []);
     let loadIngredient = () => {
-         axios.get("http://localhost:8080/design/ingredients", ).then(data => {
+         axios.get("http://localhost:8080/design/showingredients", ).then(data => {
             props.getIngredient(data.data);})
 
     }

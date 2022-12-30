@@ -6,12 +6,16 @@ import classes from "./CreateTaco.module.css"
 import {useNavigate} from "react-router";
 
 export const CreateTaco = (props) => {
+    let navigate = useNavigate()
     const send = (taco) => {
         console.log("1111111",taco)
        /* axios.post("http://localhost:8080/design")*/
         props.createTaco(taco)
-        let ingredients = Object.entries(props.creatingTaco).filter(ingredient => ingredient[1] == true)
-        console.log("222222222", ingredients)
+        let tacos= Object.entries(props.creatingTaco).filter(ingredient => ingredient[1] == true)
+            .map(id => {return id[0]})
+        console.log("222222222", tacos)
+        let name = props.creatingTaco.tacoName
+        console.log(name)
     }
 
 
@@ -50,6 +54,7 @@ export const CreateTaco = (props) => {
                           </div>
                       </div>*/}
                     <TacoReduxForm onSubmit = {send} wrap = {wrap} cheese = {cheese} sauce = {sauce} protein = {protein} veggies = {veggies}></TacoReduxForm>
+                    <button onClick={() => {navigate('/order')}}>Оформить заказ</button>
                 {/*</form>*/}
             </div>
     }
