@@ -4,11 +4,13 @@ import {Field, reduxForm} from "redux-form";
 import handleSubmit from "redux-form/lib/handleSubmit";
 import classes from "./CreateTaco.module.css"
 import {useNavigate} from "react-router";
+import {LoginFormRedux} from "../auth/Loginform";
 
 export const CreateTaco = (props) => {
+
     let navigate = useNavigate()
     const send = (taco) => {
-        console.log("1111111",taco)
+
        /* axios.post("http://localhost:8080/design")*/
         props.createTaco(taco)
         let tacos= Object.entries(props.creatingTaco).filter(ingredient => ingredient[1] == true)
@@ -17,8 +19,6 @@ export const CreateTaco = (props) => {
         let name = props.creatingTaco.tacoName
         console.log(name)
     }
-
-
     if (props.ingredients.length == 0 ){
         return <div>
             Loading...
@@ -34,9 +34,9 @@ export const CreateTaco = (props) => {
             (<Protein key = {item.id} id = {item.id} name = {item.name}/>))
         let veggies = props.ingredients.filter(ingredient => ingredient.type == "VEGGIES").map(item =>
             (<Veggies  key = {item.id} id = {item.id} name = {item.name}/>))
-      return <div className={classes.text}>
-                {/*<form>*/}
-                      {/*<h3>Designate your wrap:</h3>
+        return <div className={classes.text}>
+            {/*<form>*/}
+            {/*<h3>Designate your wrap:</h3>
                         {wrap}
                       <h3>Choose your cheese:</h3>
                         {cheese}
@@ -53,12 +53,11 @@ export const CreateTaco = (props) => {
                               <button onSubmit = {onSubmit} >Submit your taco</button>
                           </div>
                       </div>*/}
-                    <TacoReduxForm onSubmit = {send} wrap = {wrap} cheese = {cheese} sauce = {sauce} protein = {protein} veggies = {veggies}></TacoReduxForm>
-                    <button onClick={() => {navigate('/order')}}>Оформить заказ</button>
-                {/*</form>*/}
-            </div>
+            <TacoReduxForm onSubmit = {send} wrap = {wrap} cheese = {cheese} sauce = {sauce} protein = {protein} veggies = {veggies}></TacoReduxForm>
+            <button onClick={() => {navigate('/order')}}>Оформить заказ</button>
+            {/*</form>*/}
+        </div>
     }
-
 }
 
 
@@ -102,7 +101,6 @@ export const Veggies = (props) => {
 
 
 const TacoForm = (props) => {
-    console.log("333333", props.handleSubmit)
     return (
         <form onSubmit={props.handleSubmit}>
             <h3>Designate your wrap:</h3>

@@ -1,0 +1,19 @@
+.central{
+    display: flex;
+    vertical-align: middle;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding-top: 20px;
+
+}
+.myRightLink{
+    text-align: right;
+}
+.myLink{
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
