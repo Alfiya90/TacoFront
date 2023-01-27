@@ -12,7 +12,9 @@ import {setAuthParam} from "../reducers/authReduscer";
                console.log(isAuth)
            navigate('/login', {replace:true})
        }
-       })
+           setAuthParam()
+
+       },[isAuth])
     return children;
 }
 let mapStateToProps = (state) => {

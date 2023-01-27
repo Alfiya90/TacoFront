@@ -1,17 +1,20 @@
 import React, {useEffect} from "react";
 import {CreateTaco} from "./CreateTaco";
 import {connect} from "react-redux";
-import {createTacoAC, getIngredientAC} from "../reducers/createTacoReducer";
+import {createTacoAC, getIngredientAC, getIngredientsThunk} from "../reducers/createTacoReducer";
 import axios from "axios";
 
 const CreateTacoContainer = (props) => {
-    useEffect(() => {loadIngredient()}, []);
+    debugger;
+    useEffect(() => {getIngredientsThunk()}, []);
+
+ /*   useEffect(() => {loadIngredient()}, []);
 
     const authAxios = axios.create({
         baseURL: 'http://localhost:8080/',
         method: 'get',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzQ1OTg0MDMsImlhdCI6MTY3NDU4MDQwM30.yVP0eFvTG0sq804cBjbKIsTCvS0T7ncl5CWMisom9kzbIzIcC5dgrQyWRQKOu3K-WCzmGbRZ3Iz8RNKxispzpw',
+            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzQ4MTAyNjEsImlhdCI6MTY3NDc5MjI2MX0.tvwEbMa7hOCndtN67tGKVBP9-0M4lz3MEdpiKOu_foO_FzZ2LNGldVf-C736xLS9l3TUI184u9neuJsiYb1ywg',
             'Content-Type': 'application/json',
         },
 
@@ -20,7 +23,7 @@ const CreateTacoContainer = (props) => {
         authAxios.get("http://localhost:8080/design/showingredients", ).then(data => {
             props.getIngredient(data.data);})
 
-    }
+    }*/
 
 
     return(

@@ -17,6 +17,14 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 
 
 function App (props){
+    const authAxios = axios.create({
+        baseURL: 'http://localhost:8080/',
+        headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzQ3MzA2NjUsImlhdCI6MTY3NDcxMjY2NX0.xzNLML50EMvWpH8EKStWwTGq-Yaqgw7Li_GBpZ3sYOuMKgHXbABnF61B3XY1lPnupHWylYY-P8GmXfGFqTI_Dw',
+            'Content-Type': 'application/json',
+        },
+
+    })
     const onSubmit = (tacosOrder) => {
         console.log(tacosOrder)
         props.orderDataAC(tacosOrder)
@@ -32,9 +40,10 @@ function App (props){
         /*axios.get("http://localhost:8080/helloadmin",   {headers : {Authorization: JSON.stringify('eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJpc0FkbWluIjp0cnVlLCJleHAiOjE2NzM5MTMxMjcsImlhdCI6MTY3Mzg5NTEyN30.lCtHcSY7imLEJIRf4xqyt909YKE-Fw27QzlLhtf6o_AgRak8wDlQsoHPnkeQykTT_XASzEdL0AP6QcSgMyCnFw'
                 )}} ).then(response =>
             {console.log(response)})*/
+        authAxios.post("orders", data).then(response => {console.log(response)})
 
 
-        const authAxios = axios.create({
+       /* const authAxios = axios.create({
             baseURL: 'http://localhost:8080/',
             method: 'get',
             headers: {
@@ -44,9 +53,9 @@ function App (props){
 
         })
 
-        /*authAxios.defaults.headers.common['Authorization'] =
-            'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJpc0FkbWluIjp0cnVlLCJleHAiOjE2NzQyMDI0MjEsImlhdCI6MTY3NDE4NDQyMX0.6P50nwMnosWCPKOTvps2frNi7-t1w2bbXPyBh3fAmSsNfRiegdMsPQerc7zDFNyzXO5dmXQj-7M5kychVCBWXQ';*/
-        authAxios.get('design/showingredients').then(response => console.log(response))
+        /!*authAxios.defaults.headers.common['Authorization'] =
+            'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJpc0FkbWluIjp0cnVlLCJleHAiOjE2NzQyMDI0MjEsImlhdCI6MTY3NDE4NDQyMX0.6P50nwMnosWCPKOTvps2frNi7-t1w2bbXPyBh3fAmSsNfRiegdMsPQerc7zDFNyzXO5dmXQj-7M5kychVCBWXQ';*!/
+        authAxios.get('design/showingredients').then(response => console.log(response))*/
     }
 
     const onSubmitRegistrForm = (regform) => {
