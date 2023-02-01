@@ -1,29 +1,17 @@
 import React, {useEffect} from "react";
 import {CreateTaco} from "./CreateTaco";
 import {connect} from "react-redux";
-import {createTacoAC, getIngredientAC, getIngredientsThunk} from "../reducers/createTacoReducer";
-import axios from "axios";
+import {createTacoAC, getIngredientAC} from "../reducers/createTacoReducer";
+import {api} from "../api/api";
 
 const CreateTacoContainer = (props) => {
-    debugger;
-    useEffect(() => {getIngredientsThunk()}, []);
 
- /*   useEffect(() => {loadIngredient()}, []);
+    useEffect(() => {loadIngredient()}, []);
 
-    const authAxios = axios.create({
-        baseURL: 'http://localhost:8080/',
-        method: 'get',
-        headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzQ4MTAyNjEsImlhdCI6MTY3NDc5MjI2MX0.tvwEbMa7hOCndtN67tGKVBP9-0M4lz3MEdpiKOu_foO_FzZ2LNGldVf-C736xLS9l3TUI184u9neuJsiYb1ywg',
-            'Content-Type': 'application/json',
-        },
-
-    })
-    let loadIngredient = () => {
-        authAxios.get("http://localhost:8080/design/showingredients", ).then(data => {
-            props.getIngredient(data.data);})
-
-    }*/
+    //необходимо перевести в thunk
+    let  loadIngredient = () => {
+            api.getIngredients().then(response => { props.getIngredient(response.data)})
+        }
 
 
     return(

@@ -38,6 +38,7 @@ export let createTacoReducer = (state = initialState, action) => {
 }
 
 export let getIngredientAC = (ingredients) => {
+    debugger
     return {
         type: GET_INGREDIENT,
         ingredients
@@ -56,29 +57,41 @@ export let orderDataAC = (orderData) => {
         type: SET_ORDER_DATA,
         orderData
     }
-
-}
-
-const instance = axios.create({
-    baseURL: 'http://localhost:8080/',
-    headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzQ4MTAyNjEsImlhdCI6MTY3NDc5MjI2MX0.tvwEbMa7hOCndtN67tGKVBP9-0M4lz3MEdpiKOu_foO_FzZ2LNGldVf-C736xLS9l3TUI184u9neuJsiYb1ywg`,
-    }})
-
-export const getIngredientsThunk =(dispatch) => {
-    let data = instance.get('design/showingredients' ).then((response) =>
-    {return response.data})
-    /*let data = api.getIngredients();*/
-    dispatch(getIngredientAC(data))
-
 }
 
 /*
-export const getIngredientTC = () => {
-    debugger
-    return async (dispatch) => {
-    let data = await axios.get("http://localhost:8080/design/ingredients")
-    console.log(data)
-    dispatch(getIngredientAC(data));
+const instance = axios.create({
+    baseURL: 'http://localhost:8080/',
+    headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzUxOTkwMjEsImlhdCI6MTY3NTE4MTAyMX0.ZJz252CelaND4k0in3ro6-ojGbf9avfBw3Fs3YcyKYAM4K6bHxBnOsQEOz8ORCBros6FU202oMxjmlr1R-Ekzg'
+    }})
+
+
+
+export const url = {
+    getIngredients() {
+        return instance.get('design/showingredients').then(response => {
+            return response.data
+        })
     }
-}*/
+}
+export let loadIngredient = () => {
+    debugger
+    return dispatch => {
+        instance.get('design/showingredients' ).then(data => {
+            dispatch(getIngredientAC(data.data))})}
+    }
+
+
+
+export const getIngredientsThunk = () =>
+    async (dispatch) => {
+        let data = await url.getIngredients();
+        dispatch(getIngredientAC(data))
+        debugger;
+
+    }
+*/
+
+
+

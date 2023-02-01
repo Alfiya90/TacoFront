@@ -70,7 +70,7 @@ export  let setAuthParam = () => {
 }
 
 
-export const login = (payload) => {
+/*export const login = (payload) => {
     return async (dispatch) => {
         let data = await  axios.post("http://localhost:8080/register", payload)
         if (data) {
@@ -78,7 +78,7 @@ export const login = (payload) => {
             dispatch(getToken(data));
         }
     }
-}
+}*/
 
 
 

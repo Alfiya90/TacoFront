@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import {orderDataAC} from "./reducers/createTacoReducer";
 import {RegistrationFormRedux} from "./auth/RegistrationForm";
 import {LoginFormRedux} from "./auth/Loginform";
-import {getToken, login, setAuthParam} from "./reducers/authReduscer";
+import {getToken, setAuthParam} from "./reducers/authReduscer";
 import {type} from "@testing-library/user-event/dist/type";
 /*import {ProtectedRoute} from "./auth/ProtectedRoute";*/
 import {useNavigate} from "react-router";
@@ -109,4 +109,4 @@ let mapStateToProps = (state) => {
 
 
 }
-export default connect(mapStateToProps, {orderDataAC,login, getToken, setAuthParam})(App);
+export default connect(mapStateToProps, {orderDataAC, getToken, setAuthParam})(App);
