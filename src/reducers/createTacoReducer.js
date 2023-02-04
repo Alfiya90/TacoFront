@@ -1,16 +1,37 @@
 import React from "react";
-import {api} from "../api/api";
-import axios from "axios";
 
 const GET_INGREDIENT = "GET_INGREDIENT";
 const CREATE_TACO_SUCCESS = "CREATE_TACO_SUCCESS";
 const SET_ORDER_DATA = "SET_ORDER_DATA";
+
+export let getIngredientAC = (ingredients) => {
+    return {
+        type: GET_INGREDIENT,
+        ingredients
+    }
+}
+
+export let createTacoAC = (taco) => {
+    return {
+        type: CREATE_TACO_SUCCESS,
+        taco
+    }
+}
+
+export let orderDataAC = (orderData) => {
+    return{
+        type: SET_ORDER_DATA,
+        orderData
+    }
+}
 
 let initialState =  {
     ingredients: [],
     creatingTaco: {},
     orderData:{}
 }
+
+
 export let createTacoReducer = (state = initialState, action) => {
    switch (action.type) {
        case GET_INGREDIENT: {
@@ -37,27 +58,7 @@ export let createTacoReducer = (state = initialState, action) => {
     return state;
 }
 
-export let getIngredientAC = (ingredients) => {
-    debugger
-    return {
-        type: GET_INGREDIENT,
-        ingredients
-    }
-}
 
-export let createTacoAC = (taco) => {
-    return {
-        type: CREATE_TACO_SUCCESS,
-        taco
-    }
-}
-
-export let orderDataAC = (orderData) => {
-    return{
-        type: SET_ORDER_DATA,
-        orderData
-    }
-}
 
 /*
 const instance = axios.create({

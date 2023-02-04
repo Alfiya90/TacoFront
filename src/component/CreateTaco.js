@@ -116,6 +116,7 @@ const TacoForm = (props) => {
             <div>
                 <h2>Name your taco creation</h2>
                 <Field component = {'input'} name = {"tacoName"}/>
+                <br/>
                 <div className={classes.but}>
                     <input type={"submit"} value = {"Submit your taco "} />
                 </div>

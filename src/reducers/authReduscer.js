@@ -1,7 +1,7 @@
 import React from   "react";
 import axios from "axios";
 
-let GET_ATHENTICATION = "GET_ATHENTICATION"
+let GET_AUTHENTICATION = "GET_AUTHENTICATION"
 let GET_TOKEN = "GET_TOKEN"
 let SET_AUTH_PARAM = "SET_AUTH_PARAM"
 
@@ -15,13 +15,14 @@ let initialState =  {
     export let authReducer = (state = initialState, action) => {
         switch (action.type) {
 
-            case GET_ATHENTICATION: {
+            case GET_AUTHENTICATION: {
                 return {
                     ...state,
                     payload: {...action.payload}
                 }
             };
             case GET_TOKEN: {
+                debugger;
                 return {
                     ...state,
                     token: {...action.token}
@@ -51,21 +52,20 @@ let initialState =  {
 
 export let authenticationAC = (payload) => {
     return {
-        type: GET_ATHENTICATION,
+        type: GET_AUTHENTICATION,
         payload
     }
 }
 
-export  let getToken = (token) => {
+export let getToken = (token) => {
     return {
         type: GET_TOKEN,
         token
     }
 }
-export  let setAuthParam = () => {
+export let setAuthParam = () => {
     return {
         type: SET_AUTH_PARAM,
-
     }
 }
 

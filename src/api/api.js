@@ -12,17 +12,65 @@ import {store} from "../Store"
     }
 }())*/
 
+let token = store.getState().auth.token;
+let baseURL = 'http://localhost:8080'
+export const setToken = () => {
+    debugger
+     token = store.getState().auth.token;
+/*    if(token){
+        axios.defaults.headers.common['Authorization'] = token.token;
+    } else {
+        axios.defaults.headers.common['Authorization'] = null;
+    }*/
+}
+
+
 const instance = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL,
     headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNVc2VyIjp0cnVlLCJleHAiOjE2NzUxOTkwMjEsImlhdCI6MTY3NTE4MTAyMX0.ZJz252CelaND4k0in3ro6-ojGbf9avfBw3Fs3YcyKYAM4K6bHxBnOsQEOz8ORCBros6FU202oMxjmlr1R-Ekzg'
+        Authorization: `Bearer ${token?.token}`
     }})
 
+
+
 export const api = {
-    getIngredients(){
-        return instance.get('design/showingredients' )
+    getIngredients() {
+        return axios({
+            method: 'get',
+            url: `${baseURL}/design/showingredients`,
+            headers: {
+                Authorization: `Bearer ${token?.token}`
+                }
+        })
+    },
+    sendTaco(dataOrder) {
+        return axios({
+            method: 'post',
+            url: `${baseURL}/orders`,
+            headers: {
+                Authorization: `Bearer ${token?.token}`
+            },
+            data: dataOrder
+        })
+
     }
 }
+
+const authInstance = axios.create({
+    baseURL: 'http://localhost:8080/'
+   })
+
+export const auth = {
+    authenticate(payload){
+      authInstance.post('authenticate',payload)
+    },
+    registration(payload){
+        authInstance.post('registration', payload)
+    }
+
+}
+
+
 
 
 

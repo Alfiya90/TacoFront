@@ -12,5 +12,5 @@ let reducers = combineReducers({
     auth: authReducer
 })
 
-export let store = legacy_createStore(reducers, applyMiddleware(thunk))
+export let store = legacy_createStore(reducers)
 window.store = store;
